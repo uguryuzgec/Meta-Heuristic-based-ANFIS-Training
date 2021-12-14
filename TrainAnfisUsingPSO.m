@@ -21,12 +21,12 @@ function output=TrainAnfisUsingPSO(fis,data)
     
     Problem.nVar=numel(p0);
     
-    Problem.VarMin=-25;
-    Problem.VarMax=25;
+    Problem.VarMin=-1;
+    Problem.VarMax=1;
 
     %% PSO Params
     Params.MaxIt=100;
-    Params.nPop=25;
+    Params.nPop=10*Problem.nVar;
 
     %% Run PSO
     results=RunPSO(Problem,Params);
