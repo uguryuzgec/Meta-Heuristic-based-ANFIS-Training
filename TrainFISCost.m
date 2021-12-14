@@ -21,8 +21,8 @@ function [z, out]=TrainFISCost(x,fis,data)
 
     p0=GetFISParams(fis);
 
-    p=x.*p0;
-% % %     p = x;    
+% % %     p=x.*p0;
+    p = x;    
     fis=SetFISParams(fis,p);
     
     x=data.TrainInputs;

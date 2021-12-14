@@ -21,20 +21,20 @@ function output=TrainAnfisUsingGA(fis,data)
     
     Problem.nVar=numel(p0);
     
-    Problem.VarMin=-25;
-    Problem.VarMax=25;
+    Problem.VarMin=-1;
+    Problem.VarMax=1;
 
     %% GA Params
     Params.MaxIt=100;
-    Params.nPop=25;
+    Params.nPop=10*Problem.nVar;
 
     %% Run GA
     results=RunGA(Problem,Params);
     
     %% Get Results
     
-    p=results.BestSol.Position.*p0;
-% % %     p=results.BestSol.Position;
+%     p=results.BestSol.Position.*p0;
+    p=results.BestSol.Position;
     bestfis=SetFISParams(fis,p);
     output.bestfis=bestfis;
 	output.bestcost=results.BestCost;
@@ -64,7 +64,7 @@ function results=RunGA(Problem,Params)
     nPop=Params.nPop;        % Population Size
 
     pc=0.4;                 % Crossover Percentage
-    nc=2*round(pc*nPop/2);  % Number of Offsprings (Parnets)
+    nc=2*round(pc*nPop/2);  % Number of Offsprings (Parents)
 
     pm=0.7;                 % Mutation Percentage
     nm=round(pm*nPop);      % Number of Mutants

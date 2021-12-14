@@ -22,10 +22,17 @@ data=LoadData();
 %% Generate Basic FIS
 
 fis=CreateInitialFIS(data,10);
+    figure
+	[x,mf] = plotmf(fis,'input',1);
+	subplot(2,1,1), plot(x,mf)
+	xlabel('Membership Functions for Input 1')
+	[x,mf] = plotmf(fis,'input',2);
+	subplot(2,1,2), plot(x,mf)
+	xlabel('Membership Functions for Input 2')
 
 %% Training Using GA, PSO, others... 
 
-Options = {'Genetic Algorithm', 'Particle Swarm Optimization'};
+Options = {'Genetic Algorithm', 'Particle Swarm Optimization', 'kendi algoritma isminizi...'};
 
 [Selection, Ok] = listdlg('PromptString', 'Select training method for ANFIS:', ...
                           'SelectionMode', 'single', ...
@@ -45,10 +52,20 @@ switch Selection
     case 2, output=TrainAnfisUsingPSO(fis,data);
             str=string('PSO');
             bestcost=output.bestcost;
-            fis=output.bestfis; 		
+            fis=output.bestfis;
+    case 3, ....
 end
 
-%% Results
+    %% Results
+    figure
+	[x,mf] = plotmf(fis,'input',1);
+	subplot(2,1,1), plot(x,mf)
+	title(string('training using ')+str)
+	xlabel('Membership Functions for Input 1')
+	[x,mf] = plotmf(fis,'input',2);
+	subplot(2,1,2), plot(x,mf)
+	xlabel('Membership Functions for Input 2')
+
 figure
 plot(bestcost);
 xlabel('iteration')
