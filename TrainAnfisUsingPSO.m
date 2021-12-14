@@ -33,7 +33,8 @@ function output=TrainAnfisUsingPSO(fis,data)
     
     %% Get Results
     
-    p=results.BestSol.Position.*p0;
+%   p=results.BestSol.Position.*p0;
+    p=results.BestSol.Position;
     bestfis=SetFISParams(fis,p);
     output.bestfis=bestfis;
 	output.bestcost=results.BestCost;
