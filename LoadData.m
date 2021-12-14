@@ -19,7 +19,7 @@ function data=LoadData()
     data_min_outputs=min(data_orj.Targets(1:2,:)');
     data_max_outputs=max(data_orj.Targets(1:2,:)');
     %Veri Normalizasyon
-	data.Inputs = (data_orj.Inputs - data_min_inputs')./( data_max_inputs'- data_min_inputs');
+    data.Inputs = (data_orj.Inputs - data_min_inputs')./( data_max_inputs'- data_min_inputs');
     data.Targets = (data_orj.Targets - data_min_outputs')./( data_max_outputs'- data_min_outputs');
     %     data(isnan(data)) = 0;
     Inputs=data.Inputs';
